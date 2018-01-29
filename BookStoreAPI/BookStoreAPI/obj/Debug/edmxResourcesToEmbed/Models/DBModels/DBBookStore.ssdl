@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="assunto">
+    <Key>
+      <PropertyRef Name="ID_ASSUNTO" />
+    </Key>
+    <Property Name="ID_ASSUNTO" Type="int" Nullable="false" />
+    <Property Name="TITULO_ASSUNTO" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="autor">
+    <Key>
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_AUTOR" Type="int" Nullable="false" />
+    <Property Name="NOME_AUTOR" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="editora">
+    <Key>
+      <PropertyRef Name="ID_EDITORA" />
+    </Key>
+    <Property Name="ID_EDITORA" Type="int" Nullable="false" />
+    <Property Name="NOME_EDITORA" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="editora_autor">
+    <Key>
+      <PropertyRef Name="ID_EDITORA" />
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_EDITORA" Type="int" Nullable="false" />
+    <Property Name="ID_AUTOR" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="livro">
+    <Key>
+      <PropertyRef Name="ID_LIVRO" />
+    </Key>
+    <Property Name="ID_LIVRO" Type="int" Nullable="false" />
+    <Property Name="TITULO_LIVRO" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PRECO_LIVRO" Type="real" Nullable="false" />
+    <Property Name="ID_EDITORA_LIVRO" Type="int" Nullable="false" />
+    <Property Name="ID_ASSUNTO_LIVRO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="livro_autor">
+    <Key>
+      <PropertyRef Name="ID_LIVRO" />
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_LIVRO" Type="int" Nullable="false" />
+    <Property Name="ID_AUTOR" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__editora_a__ID_AU__33D4B598">
+    <End Role="autor" Type="Self.autor" Multiplicity="1" />
+    <End Role="editora_autor" Type="Self.editora_autor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autor">
+        <PropertyRef Name="ID_AUTOR" />
+      </Principal>
+      <Dependent Role="editora_autor">
+        <PropertyRef Name="ID_AUTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__editora_a__ID_ED__32E0915F">
+    <End Role="editora" Type="Self.editora" Multiplicity="1" />
+    <End Role="editora_autor" Type="Self.editora_autor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="editora">
+        <PropertyRef Name="ID_EDITORA" />
+      </Principal>
+      <Dependent Role="editora_autor">
+        <PropertyRef Name="ID_EDITORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__livro__ID_ASSUNT__2C3393D0">
+    <End Role="assunto" Type="Self.assunto" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="assunto">
+        <PropertyRef Name="ID_ASSUNTO" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="ID_ASSUNTO_LIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__livro__ID_EDITOR__2B3F6F97">
+    <End Role="editora" Type="Self.editora" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="editora">
+        <PropertyRef Name="ID_EDITORA" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="ID_EDITORA_LIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__livro_aut__ID_AU__300424B4">
+    <End Role="autor" Type="Self.autor" Multiplicity="1" />
+    <End Role="livro_autor" Type="Self.livro_autor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autor">
+        <PropertyRef Name="ID_AUTOR" />
+      </Principal>
+      <Dependent Role="livro_autor">
+        <PropertyRef Name="ID_AUTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__livro_aut__ID_LI__2F10007B">
+    <End Role="livro" Type="Self.livro" Multiplicity="1" />
+    <End Role="livro_autor" Type="Self.livro_autor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="livro">
+        <PropertyRef Name="ID_LIVRO" />
+      </Principal>
+      <Dependent Role="livro_autor">
+        <PropertyRef Name="ID_LIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookStoreModelStoreContainer">
+    <EntitySet Name="assunto" EntityType="Self.assunto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="autor" EntityType="Self.autor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="editora" EntityType="Self.editora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="editora_autor" EntityType="Self.editora_autor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="livro" EntityType="Self.livro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="livro_autor" EntityType="Self.livro_autor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__editora_a__ID_AU__33D4B598" Association="Self.FK__editora_a__ID_AU__33D4B598">
+      <End Role="autor" EntitySet="autor" />
+      <End Role="editora_autor" EntitySet="editora_autor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__editora_a__ID_ED__32E0915F" Association="Self.FK__editora_a__ID_ED__32E0915F">
+      <End Role="editora" EntitySet="editora" />
+      <End Role="editora_autor" EntitySet="editora_autor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__livro__ID_ASSUNT__2C3393D0" Association="Self.FK__livro__ID_ASSUNT__2C3393D0">
+      <End Role="assunto" EntitySet="assunto" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__livro__ID_EDITOR__2B3F6F97" Association="Self.FK__livro__ID_EDITOR__2B3F6F97">
+      <End Role="editora" EntitySet="editora" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__livro_aut__ID_AU__300424B4" Association="Self.FK__livro_aut__ID_AU__300424B4">
+      <End Role="autor" EntitySet="autor" />
+      <End Role="livro_autor" EntitySet="livro_autor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__livro_aut__ID_LI__2F10007B" Association="Self.FK__livro_aut__ID_LI__2F10007B">
+      <End Role="livro" EntitySet="livro" />
+      <End Role="livro_autor" EntitySet="livro_autor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -3,3 +3,4 @@
 ################################################################################
 
 /BookStoreAPI/BookStoreAPI/App_Data/BookStore.mdf
+/BookStoreAPI/BookStoreAPI/App_Data/BookStore_log.ldf
