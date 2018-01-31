@@ -22,10 +22,11 @@ namespace BookStoreAPI.BookStoreControllers
 
         // CRUD de editora criado
 
-        EditoraBusiness crud = new EditoraBusiness();
+        EditoraBusiness crud = EditoraBusiness.instance;
 
         [HttpGet]
         [Route("api/ListEditoras")]
+        [ResponseType(typeof(List<Editora>))]
         public async Task<IHttpActionResult> ListEditoras(int i = 0)
         {
             var result = await crud.ListAll(Querys.SELECT_EDITORAS);
@@ -35,7 +36,7 @@ namespace BookStoreAPI.BookStoreControllers
 
         [HttpGet]
         [Route("api/ListEditora/{id}")]
-        [ResponseType(typeof(editora))]
+        [ResponseType(typeof(Editora))]
         public async Task<IHttpActionResult> ListEditora(int id)
          {
             var result = await crud.ListById(Querys.SELECT_EDITORA, id);

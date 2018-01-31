@@ -11,7 +11,7 @@ namespace BookStoreAPI.BookStoreBusiness
     public class DBBusiness<T>
         where T : DBResult
     {
-        protected DBDataAccess crudModel = new DBDataAccess();
+        protected DBDataAccess crudModel = DBDataAccess.instance;
 
         public async Task<List<T>> ListAll(string query, params object[] args)
         {

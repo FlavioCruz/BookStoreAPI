@@ -13,6 +13,7 @@ using System.Web.Http.Description;
 using BookStoreAPI.BookStoreModels.DBModels;
 using BookStoreAPI.Results.DBResults;
 using Newtonsoft.Json.Linq;
+using BookStoreAPI.BookStoreBusiness;
 
 namespace BookStoreAPI.BookStoreControllers
 {
@@ -20,26 +21,24 @@ namespace BookStoreAPI.BookStoreControllers
     {
         
         // CRUD de assunto criado
-        
-        private BookStoreEntities db = new BookStoreEntities();
+        AssuntoBusiness crud = AssuntoBusiness.instance;
 
         [HttpGet]
         [Route("api/ListAssuntos")]
         public async Task<IHttpActionResult> ListAssuntos(int i = 0)
         {
-            return Ok(
-                await db.Database.SqlQuery<Assunto>(Querys.SELECT_ASSUNTOS).ToListAsync()
-            );
+            
+            var result = await crud.ListAll(Querys.SELECT_ASSUNTOS);
+            return Ok(result);
         }
 
 
         [HttpGet]
         [Route("api/ListAssunto/{id}")]
         public async Task<IHttpActionResult> ListAssunto(int id)
-        {
-            return Ok(
-                await db.Database.SqlQuery<Assunto>(Querys.SELECT_ASSUNTO, id).ToListAsync()
-            );
+        { 
+            var result = await crud.ListById(Querys.SELECT_ASSUNTO, id);
+            return Ok(result);
         }
 
         [HttpPost]
@@ -51,7 +50,7 @@ namespace BookStoreAPI.BookStoreControllers
                 var obj = await Request.Content.ReadAsAsync<JObject>();
                 string nome = obj.GetValue("NOME").ToString();
                 string id = obj.GetValue("ID").ToString();
-                await db.Database.ExecuteSqlCommandAsync(Querys.UPDATE_ASSUNTO, nome, id);
+                await crud.Update(Querys.UPDATE_ASSUNTO, nome, id);
                 return Ok(1);
             }
             catch (Exception e)
@@ -68,8 +67,8 @@ namespace BookStoreAPI.BookStoreControllers
             {
                 var obj = await Request.Content.ReadAsAsync<JObject>();
                 string nome = obj.GetValue("NOME").ToString();
-                await db.Database.ExecuteSqlCommandAsync(Querys.INSERT_EDITORA, nome);
-                return Ok(1);
+                var result = await crud.InsertAndGetObj(Querys.INSERT_EDITORA, nome);
+                return Ok(result.ID);
             }
             catch (Exception e)
             {
@@ -85,27 +84,13 @@ namespace BookStoreAPI.BookStoreControllers
         {
             try
             {
-                await db.Database.ExecuteSqlCommandAsync(Querys.DELETE_ASSUNTO, id);
+                await crud.Delete(Querys.DELETE_ASSUNTO, id);
                 return Ok(1);
             }
             catch (Exception e)
             {
                 return Ok(e.Message);
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool assuntoExists(int id)
-        {
-            return db.assunto.Count(e => e.ID_ASSUNTO == id) > 0;
         }
     }
 }

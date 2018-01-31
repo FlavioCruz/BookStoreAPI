@@ -238,6 +238,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="BookStoreBusiness\AssuntoBusiness.cs" />
+    <Compile Include="BookStoreDataAccess\Entities\AssuntoDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Entities\DBDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Entities\EditoraDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Interfaces\IDBDataAccess.cs" />

@@ -12,6 +12,22 @@ namespace BookStoreAPI.BookStoreDataAccess.Entities
     {
         private BookStoreEntities db = new BookStoreEntities();
 
+        private static DBDataAccess _instance;
+
+        protected DBDataAccess() { }
+
+        public static DBDataAccess instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new DBDataAccess();
+                }
+                return _instance;
+            }
+        }
+
         /// <summary>
         /// Lista todas as ocorrencias
         /// </summary>

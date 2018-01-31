@@ -6,19 +6,19 @@ using System.Web;
 
 namespace BookStoreAPI.BookStoreBusiness
 {
-    public class EditoraBusiness : DBBusiness<Editora>
+    public class AssuntoBusiness : DBBusiness<Assunto>
     {
-        private static EditoraBusiness _instance;
+        private static AssuntoBusiness _instance;
 
-        private EditoraBusiness() { }
+        private AssuntoBusiness() { }
 
-        public static EditoraBusiness instance
+        public static AssuntoBusiness instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new EditoraBusiness();
+                    _instance = new AssuntoBusiness();
                 }
                 return _instance;
             }
