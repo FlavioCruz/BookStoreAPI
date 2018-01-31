@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BookStoreAPI.BookStoreDataAccess.Entities
 {
-    public class EditoraDataAccess : DBDataAccess, IEditoraDataAccess
+    public class AutorDataAccess : DBDataAccess, IAutorDataAccess
     {
     }
 }

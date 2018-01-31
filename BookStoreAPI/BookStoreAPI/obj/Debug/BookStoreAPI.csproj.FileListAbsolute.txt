@@ -89,3 +89,4 @@ C:\Users\Flavio\Documents\Projetos\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\Mi
 C:\Users\Flavio\Documents\Projetos\BookStoreAPI\BookStoreAPI\BookStoreAPI\bin\System.Web.Http.Owin.xml
 C:\Users\Flavio\Documents\Projetos\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\BookStoreAPI.dll
 C:\Users\Flavio\Documents\Projetos\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\BookStoreAPI.pdb
+C:\Users\Flavio\Documents\Projetos\BookStoreAPI\BookStoreAPI\BookStoreAPI\obj\Debug\BookStoreAPI.csprojResolveAssemblyReference.cache

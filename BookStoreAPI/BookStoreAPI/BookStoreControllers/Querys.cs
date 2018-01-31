@@ -29,22 +29,26 @@ namespace BookStoreAPI.BookStoreControllers
         #endregion
 
         #region Querys de autor
-        public static readonly string SELECT_AUTORES = "SELECT ID_AUTOR AS ID, NOME_AUTOR AS NOME" + 
+        public static readonly string SELECT_AUTORES = "SELECT ID_AUTOR AS ID, NOME_AUTOR AS NOME " + 
                                                        "FROM autor";
 
         public static readonly string SELECT_AUTOR = "SELECT ID_AUTOR AS ID, NOME_AUTOR AS NOME " + 
                                                      "FROM autor WHERE ID_AUTOR = {0}";
 
-        public static readonly string UPDATE_AUTOR = "UPDATE autor" + 
-                                                     "SET NOME_AUTOR = {0}" + 
+        public static readonly string UPDATE_AUTOR = "UPDATE autor " + 
+                                                     "SET NOME_AUTOR = {0} " + 
                                                      "WHERE ID_AUTOR = {1}";
 
-        public static readonly string INSERT_AUTOR = "INSERT INTO autor" +
+        public static readonly string INSERT_AUTOR = "INSERT INTO autor " +
                                                      "VALUES({0})";
 
-        public static readonly string DELETE_AUTOR = "DELETE" +
-                                                     "FROM autor" +
+        public static readonly string DELETE_AUTOR = "DELETE " +
+                                                     "FROM autor " +
                                                      "WHERE ID_AUTOR = {0}";
+
+        public static readonly string SELECT_AUTOR_BY_EDITORA = "SELECT A.ID_AUTOR AS ID, A.NOME_AUTOR AS NOME " +
+                                                                "FROM autor AS A, editora_autor as E " +
+                                                                "WHERE A.ID_AUTOR = E.ID_AUTOR AND E.ID_EDITORA = {0}";
 
         #endregion
 

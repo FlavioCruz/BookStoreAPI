@@ -8,5 +8,7 @@ namespace BookStoreAPI.Results.DBResults
     public class Editora : DBResult
     {
         public string NOME { get; set; }
+
+        public List<Autor> AUTORES { get; set; }
     }
 }
