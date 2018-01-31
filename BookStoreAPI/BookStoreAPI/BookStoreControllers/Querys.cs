@@ -26,6 +26,10 @@ namespace BookStoreAPI.BookStoreControllers
                                                        "FROM editora " + 
                                                        "WHERE ID_EDITORA = {0}";
 
+        public static readonly string SELECT_EDITORA_BY_AUTOR = "SELECT A.ID_EDITORA AS ID, A.NOME_NOME AS NOME " +
+                                                                "FROM editora AS E, editora_autor as A " +
+                                                                "WHERE A.ID_EDITORA = E.ID_EDITORA AND E.ID_AUTOR = {0}";
+
         #endregion
 
         #region Querys de autor

@@ -43,5 +43,10 @@ namespace BookStoreAPI.BookStoreBusiness
             }
             return result;
         }
+
+        public async Task<List<Editora>> ListEditoraByAutor(string query, params object[] args)
+        {
+            return await ListAll(query, args);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace BookStoreAPI.BookStoreBusiness.Interfaces
 {
     interface IEditoraBusiness : IDBBusiness<Editora>
     {
+        Task<List<Editora>> ListEditoraByAutor(string query, params object[] args);
     }
 }
