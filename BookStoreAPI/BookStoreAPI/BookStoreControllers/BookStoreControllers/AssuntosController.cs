@@ -10,11 +10,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using BookStoreAPI.Models.DBModels;
+using BookStoreAPI.BookStoreModels.DBModels;
 using BookStoreAPI.Results.DBResults;
 using Newtonsoft.Json.Linq;
 
-namespace BookStoreAPI.Controllers.BookStoreControllers
+namespace BookStoreAPI.BookStoreControllers
 {
     public class AssuntosController : ApiController
     {

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BOOKSTOREModelStoreContainer" CdmEntityContainer="BookStoreEtities">
+    <EntitySetMapping Name="assunto">
+      <EntityTypeMapping TypeName="BOOKSTOREModel.assunto">
+        <MappingFragment StoreEntitySet="assunto">
+          <ScalarProperty Name="ID_ASSUNTO" ColumnName="ID_ASSUNTO" />
+          <ScalarProperty Name="TITULO_ASSUNTO" ColumnName="TITULO_ASSUNTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="autor">
+      <EntityTypeMapping TypeName="BOOKSTOREModel.autor">
+        <MappingFragment StoreEntitySet="autor">
+          <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+          <ScalarProperty Name="NOME_AUTOR" ColumnName="NOME_AUTOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="editora">
+      <EntityTypeMapping TypeName="BOOKSTOREModel.editora">
+        <MappingFragment StoreEntitySet="editora">
+          <ScalarProperty Name="ID_EDITORA" ColumnName="ID_EDITORA" />
+          <ScalarProperty Name="NOME_EDITORA" ColumnName="NOME_EDITORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="livro">
+      <EntityTypeMapping TypeName="BOOKSTOREModel.livro">
+        <MappingFragment StoreEntitySet="livro">
+          <ScalarProperty Name="ID_LIVRO" ColumnName="ID_LIVRO" />
+          <ScalarProperty Name="TITULO_LIVRO" ColumnName="TITULO_LIVRO" />
+          <ScalarProperty Name="PRECO_LIVRO" ColumnName="PRECO_LIVRO" />
+          <ScalarProperty Name="ID_EDITORA_LIVRO" ColumnName="ID_EDITORA_LIVRO" />
+          <ScalarProperty Name="ID_ASSUNTO_LIVRO" ColumnName="ID_ASSUNTO_LIVRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="editora_autor" TypeName="BOOKSTOREModel.editora_autor" StoreEntitySet="editora_autor">
+      <EndProperty Name="autor">
+        <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+      </EndProperty>
+      <EndProperty Name="editora">
+        <ScalarProperty Name="ID_EDITORA" ColumnName="ID_EDITORA" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="livro_autor" TypeName="BOOKSTOREModel.livro_autor" StoreEntitySet="livro_autor">
+      <EndProperty Name="autor">
+        <ScalarProperty Name="ID_AUTOR" ColumnName="ID_AUTOR" />
+      </EndProperty>
+      <EndProperty Name="livro">
+        <ScalarProperty Name="ID_LIVRO" ColumnName="ID_LIVRO" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

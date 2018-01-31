@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BookStoreAPI.Models.DBModels
+namespace BookStoreAPI.BookStoreModels.DBModels
 {
     using System;
     using System.Collections.Generic;

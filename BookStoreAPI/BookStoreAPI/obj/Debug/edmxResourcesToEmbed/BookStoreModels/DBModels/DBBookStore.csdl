@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BOOKSTOREModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="assunto">
+    <Key>
+      <PropertyRef Name="ID_ASSUNTO" />
+    </Key>
+    <Property Name="ID_ASSUNTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TITULO_ASSUNTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="livro" Relationship="Self.FK__livro__ID_ASSUNT__4316F928" FromRole="assunto" ToRole="livro" />
+  </EntityType>
+  <EntityType Name="autor">
+    <Key>
+      <PropertyRef Name="ID_AUTOR" />
+    </Key>
+    <Property Name="ID_AUTOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_AUTOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="editora" Relationship="Self.editora_autor" FromRole="autor" ToRole="editora" />
+    <NavigationProperty Name="livro" Relationship="Self.livro_autor" FromRole="autor" ToRole="livro" />
+  </EntityType>
+  <EntityType Name="editora">
+    <Key>
+      <PropertyRef Name="ID_EDITORA" />
+    </Key>
+    <Property Name="ID_EDITORA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_EDITORA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="livro" Relationship="Self.FK__livro__ID_EDITOR__3F466844" FromRole="editora" ToRole="livro" />
+    <NavigationProperty Name="autor" Relationship="Self.editora_autor" FromRole="editora" ToRole="autor" />
+  </EntityType>
+  <EntityType Name="livro">
+    <Key>
+      <PropertyRef Name="ID_LIVRO" />
+    </Key>
+    <Property Name="ID_LIVRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TITULO_LIVRO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRECO_LIVRO" Type="Single" Nullable="false" />
+    <Property Name="ID_EDITORA_LIVRO" Type="Int32" Nullable="false" />
+    <Property Name="ID_ASSUNTO_LIVRO" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="assunto" Relationship="Self.FK__livro__ID_ASSUNT__4316F928" FromRole="livro" ToRole="assunto" />
+    <NavigationProperty Name="editora" Relationship="Self.FK__livro__ID_EDITOR__3F466844" FromRole="livro" ToRole="editora" />
+    <NavigationProperty Name="autor" Relationship="Self.livro_autor" FromRole="livro" ToRole="autor" />
+  </EntityType>
+  <Association Name="FK__livro__ID_ASSUNT__4316F928">
+    <End Role="assunto" Type="Self.assunto" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="assunto">
+        <PropertyRef Name="ID_ASSUNTO" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="ID_ASSUNTO_LIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__livro__ID_EDITOR__3F466844">
+    <End Role="editora" Type="Self.editora" Multiplicity="1" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="editora">
+        <PropertyRef Name="ID_EDITORA" />
+      </Principal>
+      <Dependent Role="livro">
+        <PropertyRef Name="ID_EDITORA_LIVRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="editora_autor">
+    <End Role="autor" Type="Self.autor" Multiplicity="*" />
+    <End Role="editora" Type="Self.editora" Multiplicity="*" />
+  </Association>
+  <Association Name="livro_autor">
+    <End Role="autor" Type="Self.autor" Multiplicity="*" />
+    <End Role="livro" Type="Self.livro" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BookStoreEtities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="assunto" EntityType="Self.assunto" />
+    <EntitySet Name="autor" EntityType="Self.autor" />
+    <EntitySet Name="editora" EntityType="Self.editora" />
+    <EntitySet Name="livro" EntityType="Self.livro" />
+    <AssociationSet Name="FK__livro__ID_ASSUNT__4316F928" Association="Self.FK__livro__ID_ASSUNT__4316F928">
+      <End Role="assunto" EntitySet="assunto" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__livro__ID_EDITOR__3F466844" Association="Self.FK__livro__ID_EDITOR__3F466844">
+      <End Role="editora" EntitySet="editora" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+    <AssociationSet Name="editora_autor" Association="Self.editora_autor">
+      <End Role="autor" EntitySet="autor" />
+      <End Role="editora" EntitySet="editora" />
+    </AssociationSet>
+    <AssociationSet Name="livro_autor" Association="Self.livro_autor">
+      <End Role="autor" EntitySet="autor" />
+      <End Role="livro" EntitySet="livro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -238,52 +238,59 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BookStoreControllers\AssuntosController.cs" />
-    <Compile Include="Controllers\BookStoreControllers\EditorasController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Querys.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DBModels\assunto.cs">
+    <Compile Include="BookStoreDataAccess\Entities\DBDataAccess.cs" />
+    <Compile Include="BookStoreDataAccess\Entities\EditoraDataAccess.cs" />
+    <Compile Include="BookStoreDataAccess\Interfaces\IDBDataAccess.cs" />
+    <Compile Include="BookStoreBusiness\DBBusiness.cs" />
+    <Compile Include="BookStoreBusiness\EditoraBusiness.cs" />
+    <Compile Include="BookStoreControllers\AccountController.cs" />
+    <Compile Include="BookStoreControllers\BookStoreControllers\AssuntosController.cs" />
+    <Compile Include="BookStoreControllers\BookStoreControllers\EditorasController.cs" />
+    <Compile Include="BookStoreControllers\HomeController.cs" />
+    <Compile Include="BookStoreControllers\Querys.cs" />
+    <Compile Include="BookStoreControllers\ValuesController.cs" />
+    <Compile Include="BookStoreModels\DBModels\assunto.cs">
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\autor.cs">
+    <Compile Include="BookStoreModels\DBModels\autor.cs">
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\DBBookStore.Context.cs">
+    <Compile Include="BookStoreModels\DBModels\DBBookStore.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBBookStore.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\DBBookStore.cs">
+    <Compile Include="BookStoreModels\DBModels\DBBookStore.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\DBBookStore.Designer.cs">
+    <Compile Include="BookStoreModels\DBModels\DBBookStore.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBBookStore.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\editora.cs">
+    <Compile Include="BookStoreModels\DBModels\editora.cs">
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModels\livro.cs">
+    <Compile Include="BookStoreModels\DBModels\livro.cs">
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="BookStoreModels\AccountBindingModels.cs" />
+    <Compile Include="BookStoreModels\AccountViewModels.cs" />
+    <Compile Include="BookStoreModels\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Results\ChallengeResult.cs" />
-    <Compile Include="Results\DBResults\Autor.cs" />
-    <Compile Include="Results\DBResults\DBResult.cs" />
-    <Compile Include="Results\DBResults\Assunto.cs" />
-    <Compile Include="Results\DBResults\Editora.cs" />
+    <Compile Include="BookStoreResults\ChallengeResult.cs" />
+    <Compile Include="BookStoreResults\DBResults\Autor.cs" />
+    <Compile Include="BookStoreResults\DBResults\DBResult.cs" />
+    <Compile Include="BookStoreResults\DBResults\Assunto.cs" />
+    <Compile Include="BookStoreResults\DBResults\Editora.cs" />
+    <Compile Include="BookStoreResults\DBResults\Livro.cs" />
+    <Compile Include="BookStoreResults\Interfaces\IComparable.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -292,21 +299,21 @@
       <DependentUpon>BookStore.mdf</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="BookStoreModels\DBModels\DBBookStore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBBookStore.edmx</DependentUpon>
+      <LastGenOutput>DBBookStore.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BookStoreModels\DBModels\DBBookStore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBBookStore.edmx</DependentUpon>
+      <LastGenOutput>DBBookStore.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DBModels\DBBookStore.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBBookStore.edmx</DependentUpon>
-      <LastGenOutput>DBBookStore.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DBModels\DBBookStore.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBBookStore.edmx</DependentUpon>
-      <LastGenOutput>DBBookStore.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -331,11 +338,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\DBModels\DBBookStore.edmx">
+    <EntityDeploy Include="BookStoreModels\DBModels\DBBookStore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBBookStore.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DBModels\DBBookStore.edmx.diagram">
+    <Content Include="BookStoreModels\DBModels\DBBookStore.edmx.diagram">
       <DependentUpon>DBBookStore.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

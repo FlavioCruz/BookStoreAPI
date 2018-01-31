@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BookStoreAPI.Models.DBModels
+namespace BookStoreAPI.BookStoreModels.DBModels
 {
     using System;
     using System.Data.Entity;
@@ -16,7 +16,7 @@ namespace BookStoreAPI.Models.DBModels
     public partial class BookStoreEntities : DbContext
     {
         public BookStoreEntities()
-            : base("name=BookStoreEntities")
+            : base("name=BookStoreEtities")
         {
         }
     
