@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BOOKSTOREModelStoreContainer" CdmEntityContainer="BookStoreEtities">
+  <EntityContainerMapping StorageEntityContainer="BOOKSTOREModelStoreContainer" CdmEntityContainer="bookStoreEntities">
     <EntitySetMapping Name="assunto">
       <EntityTypeMapping TypeName="BOOKSTOREModel.assunto">
         <MappingFragment StoreEntitySet="assunto">
@@ -33,6 +33,17 @@
           <ScalarProperty Name="PRECO_LIVRO" ColumnName="PRECO_LIVRO" />
           <ScalarProperty Name="ID_EDITORA_LIVRO" ColumnName="ID_EDITORA_LIVRO" />
           <ScalarProperty Name="ID_ASSUNTO_LIVRO" ColumnName="ID_ASSUNTO_LIVRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="BOOKSTOREModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="NOME_USUARIO" ColumnName="NOME_USUARIO" />
+          <ScalarProperty Name="SOBRENOME_USUARIO" ColumnName="SOBRENOME_USUARIO" />
+          <ScalarProperty Name="LOGIN_USUARIO" ColumnName="LOGIN_USUARIO" />
+          <ScalarProperty Name="SENHA_USUARIO" ColumnName="SENHA_USUARIO" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

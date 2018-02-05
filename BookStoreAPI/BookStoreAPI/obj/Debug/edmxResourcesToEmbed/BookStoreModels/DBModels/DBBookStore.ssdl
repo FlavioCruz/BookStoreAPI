@@ -47,6 +47,16 @@
     <Property Name="ID_LIVRO" Type="int" Nullable="false" />
     <Property Name="ID_AUTOR" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOME_USUARIO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SOBRENOME_USUARIO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LOGIN_USUARIO" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SENHA_USUARIO" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="FK__editora_a__ID_AU__3B75D760">
     <End Role="autor" Type="Self.autor" Multiplicity="1" />
     <End Role="editora_autor" Type="Self.editora_autor" Multiplicity="*" />
@@ -126,6 +136,7 @@
     <EntitySet Name="editora_autor" EntityType="Self.editora_autor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="livro" EntityType="Self.livro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="livro_autor" EntityType="Self.livro_autor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__editora_a__ID_AU__3B75D760" Association="Self.FK__editora_a__ID_AU__3B75D760">
       <End Role="autor" EntitySet="autor" />
       <End Role="editora_autor" EntitySet="editora_autor" />

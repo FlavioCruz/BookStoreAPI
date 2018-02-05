@@ -52,6 +52,16 @@
           <Property Name="ID_LIVRO" Type="int" Nullable="false" />
           <Property Name="ID_AUTOR" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME_USUARIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SOBRENOME_USUARIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LOGIN_USUARIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SENHA_USUARIO" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <Association Name="FK__editora_a__ID_AU__3B75D760">
           <End Role="autor" Type="Self.autor" Multiplicity="1" />
           <End Role="editora_autor" Type="Self.editora_autor" Multiplicity="*" />
@@ -131,6 +141,7 @@
           <EntitySet Name="editora_autor" EntityType="Self.editora_autor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="livro" EntityType="Self.livro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="livro_autor" EntityType="Self.livro_autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__editora_a__ID_AU__3B75D760" Association="Self.FK__editora_a__ID_AU__3B75D760">
             <End Role="autor" EntitySet="autor" />
             <End Role="editora_autor" EntitySet="editora_autor" />
@@ -200,6 +211,16 @@
           <NavigationProperty Name="editora" Relationship="Self.FK__livro__ID_EDITOR__3F466844" FromRole="livro" ToRole="editora" />
           <NavigationProperty Name="autor" Relationship="Self.livro_autor" FromRole="livro" ToRole="autor" />
         </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SOBRENOME_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LOGIN_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SENHA_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <Association Name="FK__livro__ID_ASSUNT__4316F928">
           <End Role="assunto" Type="Self.assunto" Multiplicity="1" />
           <End Role="livro" Type="Self.livro" Multiplicity="*" />
@@ -232,11 +253,12 @@
           <End Role="autor" Type="Self.autor" Multiplicity="*" />
           <End Role="livro" Type="Self.livro" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="BookStoreEtities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="bookStoreEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="assunto" EntityType="Self.assunto" />
           <EntitySet Name="autor" EntityType="Self.autor" />
           <EntitySet Name="editora" EntityType="Self.editora" />
           <EntitySet Name="livro" EntityType="Self.livro" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
           <AssociationSet Name="FK__livro__ID_ASSUNT__4316F928" Association="Self.FK__livro__ID_ASSUNT__4316F928">
             <End Role="assunto" EntitySet="assunto" />
             <End Role="livro" EntitySet="livro" />
@@ -259,7 +281,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BOOKSTOREModelStoreContainer" CdmEntityContainer="BookStoreEtities">
+        <EntityContainerMapping StorageEntityContainer="BOOKSTOREModelStoreContainer" CdmEntityContainer="bookStoreEntities">
           <EntitySetMapping Name="assunto">
             <EntityTypeMapping TypeName="BOOKSTOREModel.assunto">
               <MappingFragment StoreEntitySet="assunto">
@@ -292,6 +314,17 @@
                 <ScalarProperty Name="PRECO_LIVRO" ColumnName="PRECO_LIVRO" />
                 <ScalarProperty Name="ID_EDITORA_LIVRO" ColumnName="ID_EDITORA_LIVRO" />
                 <ScalarProperty Name="ID_ASSUNTO_LIVRO" ColumnName="ID_ASSUNTO_LIVRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="BOOKSTOREModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="NOME_USUARIO" ColumnName="NOME_USUARIO" />
+                <ScalarProperty Name="SOBRENOME_USUARIO" ColumnName="SOBRENOME_USUARIO" />
+                <ScalarProperty Name="LOGIN_USUARIO" ColumnName="LOGIN_USUARIO" />
+                <ScalarProperty Name="SENHA_USUARIO" ColumnName="SENHA_USUARIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -240,14 +240,26 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="BookStoreBusiness\Entities\AssuntoBusiness.cs" />
     <Compile Include="BookStoreBusiness\Entities\AutorBusiness.cs" />
+    <Compile Include="BookStoreBusiness\Entities\UsuarioBusiness.cs" />
+    <Compile Include="BookStoreBusiness\Interfaces\ILivroBusiness.cs" />
+    <Compile Include="BookStoreBusiness\Entities\LivroBusiness.cs" />
     <Compile Include="BookStoreBusiness\Interfaces\IAssuntoBusiness.cs" />
     <Compile Include="BookStoreBusiness\Interfaces\IAutorBusiness.cs" />
     <Compile Include="BookStoreBusiness\Interfaces\IDBBusiness.cs" />
     <Compile Include="BookStoreBusiness\Interfaces\IEditoraBusiness.cs" />
+    <Compile Include="BookStoreBusiness\Interfaces\IUsuarioBusiness.cs" />
+    <Compile Include="BookStoreControllers\BookStoreControllers\AutoresController.cs" />
+    <Compile Include="BookStoreControllers\CONSTANTES.cs" />
+    <Compile Include="BookStoreControllers\UserValidationAttribute.cs" />
+    <Compile Include="BookStoreControllers\ViewsControllers\AssuntosViewController.cs" />
+    <Compile Include="BookStoreControllers\ViewsControllers\AutoresViewController.cs" />
+    <Compile Include="BookStoreControllers\ViewsControllers\LoginViewController.cs" />
     <Compile Include="BookStoreDataAccess\Entities\AssuntoDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Entities\AutorDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Entities\DBDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Entities\EditoraDataAccess.cs" />
+    <Compile Include="BookStoreDataAccess\Entities\LivroDataAccess.cs" />
+    <Compile Include="BookStoreDataAccess\Entities\UsuarioDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Interfaces\IAutorDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Interfaces\IEditoraDataAccess.cs" />
     <Compile Include="BookStoreDataAccess\Interfaces\IAssuntoDataAccess.cs" />
@@ -260,6 +272,8 @@
     <Compile Include="BookStoreControllers\HomeController.cs" />
     <Compile Include="BookStoreControllers\Querys.cs" />
     <Compile Include="BookStoreControllers\ValuesController.cs" />
+    <Compile Include="BookStoreDataAccess\Interfaces\ILivroDataAccess.cs" />
+    <Compile Include="BookStoreDataAccess\Interfaces\IUsuarioDataAccess.cs" />
     <Compile Include="BookStoreModels\DBModels\assunto.cs">
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
@@ -287,6 +301,10 @@
     <Compile Include="BookStoreModels\DBModels\livro.cs">
       <DependentUpon>DBBookStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="BookStoreModels\DBModels\usuario.cs">
+      <DependentUpon>DBBookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookStoreResults\DBResults\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -382,6 +400,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\AssuntosView\Create.cshtml" />
+    <Content Include="Views\AssuntosView\Delete.cshtml" />
+    <Content Include="Views\AssuntosView\Details.cshtml" />
+    <Content Include="Views\AssuntosView\Edit.cshtml" />
+    <Content Include="Views\AssuntosView\Index.cshtml" />
+    <Content Include="Views\AutoresView\Create.cshtml" />
+    <Content Include="Views\AutoresView\Delete.cshtml" />
+    <Content Include="Views\AutoresView\Details.cshtml" />
+    <Content Include="Views\AutoresView\Edit.cshtml" />
+    <Content Include="Views\AutoresView\Index.cshtml" />
+    <Content Include="Views\LoginView\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

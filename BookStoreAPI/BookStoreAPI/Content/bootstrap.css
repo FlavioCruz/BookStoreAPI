@@ -42,6 +42,10 @@ video {
   display: inline-block;
 }
 
+.color-black{
+  color:black;
+}
+
 audio:not([controls]) {
   display: none;
   height: 0;

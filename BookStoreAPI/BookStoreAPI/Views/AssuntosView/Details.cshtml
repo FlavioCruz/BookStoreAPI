@@ -1,0 +1,28 @@
+﻿@model BookStoreAPI.Results.DBResults.Assunto
+@using BookStoreAPI.Results.DBResults;
+
+@{
+    ViewBag.Title = "Details";
+    Assunto assunto = (Assunto)ViewData["assunto"];
+}
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>assunto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <label class="panel-title">Título</label>
+            </dt>
+
+            <dd>
+                <label class="text-info color-black">@assunto.NOME</label>
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = assunto.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

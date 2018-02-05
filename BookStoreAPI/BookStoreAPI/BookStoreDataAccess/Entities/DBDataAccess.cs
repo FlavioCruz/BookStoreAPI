@@ -61,9 +61,9 @@ namespace BookStoreAPI.BookStoreDataAccess.Entities
         /// <param name="query">query a consulta ao banco</param>
         /// <param name="args">lista de argumentos da consulta</param>
         /// <returns>Objeto</returns>
-        public async Task<T> InsertAndGetObj<T>(string query, params object[] args)
+        public async Task<int> Insert(string query, params object[] args)
         {
-            T result = await db.Database.SqlQuery<T>(query, args).SingleOrDefaultAsync();
+            int result = await db.Database.ExecuteSqlCommandAsync(query, args);
             return result;
         }
 

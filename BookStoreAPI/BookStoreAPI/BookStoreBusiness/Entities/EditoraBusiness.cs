@@ -28,23 +28,14 @@ namespace BookStoreAPI.BookStoreBusiness
             }
         }
 
-        /// <summary>
-        /// Lista todas as editoras com seus autores
-        /// </summary>
-        /// <param name="query">Query de busca das editoras</param>
-        /// <param name="args">Lista de argumentos</param>
-        /// <returns>Lista de editoras</returns>
-        public override async Task<List<Editora>> ListAll(string query, params object[] args)
+        public override async Task<Editora> ListById(string query, params object[] args)
         {
-            var result = await base.ListAll(query, args);
-            foreach(var r in result)
-            {
-                r.AUTORES = await AutorBusiness.instance.ListAutorByEditora(Querys.SELECT_AUTOR_BY_EDITORA, r.ID);
-            }
+            Editora result = await base.ListById(query, args);
+            result.AUTORES = await AutorBusiness.instance.ListAutorByParam(Querys.SELECT_AUTOR_BY_EDITORA, result.ID);
             return result;
         }
 
-        public async Task<List<Editora>> ListEditoraByAutor(string query, params object[] args)
+        public async Task<List<Editora>> ListEditoraByParam(string query, params object[] args)
         {
             return await ListAll(query, args);
         }

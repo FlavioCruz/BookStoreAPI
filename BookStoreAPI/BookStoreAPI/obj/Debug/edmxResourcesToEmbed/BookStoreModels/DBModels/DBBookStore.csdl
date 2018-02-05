@@ -39,6 +39,16 @@
     <NavigationProperty Name="editora" Relationship="Self.FK__livro__ID_EDITOR__3F466844" FromRole="livro" ToRole="editora" />
     <NavigationProperty Name="autor" Relationship="Self.livro_autor" FromRole="livro" ToRole="autor" />
   </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOME_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SOBRENOME_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LOGIN_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SENHA_USUARIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
   <Association Name="FK__livro__ID_ASSUNT__4316F928">
     <End Role="assunto" Type="Self.assunto" Multiplicity="1" />
     <End Role="livro" Type="Self.livro" Multiplicity="*" />
@@ -71,11 +81,12 @@
     <End Role="autor" Type="Self.autor" Multiplicity="*" />
     <End Role="livro" Type="Self.livro" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="BookStoreEtities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="bookStoreEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="assunto" EntityType="Self.assunto" />
     <EntitySet Name="autor" EntityType="Self.autor" />
     <EntitySet Name="editora" EntityType="Self.editora" />
     <EntitySet Name="livro" EntityType="Self.livro" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
     <AssociationSet Name="FK__livro__ID_ASSUNT__4316F928" Association="Self.FK__livro__ID_ASSUNT__4316F928">
       <End Role="assunto" EntitySet="assunto" />
       <End Role="livro" EntitySet="livro" />

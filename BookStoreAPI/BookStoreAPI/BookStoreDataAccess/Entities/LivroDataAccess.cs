@@ -7,7 +7,7 @@ using System.Web;
 namespace BookStoreAPI.BookStoreDataAccess.Entities
 {
     // onde deve se implementar regras restritivas de banco
-    public class AssuntoDataAccess : DBDataAccess, IAssuntoDataAccess
+    public class LivroDataAccess : DBDataAccess, ILivroDataAccess
     {
     }
 }

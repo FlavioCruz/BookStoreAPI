@@ -1,0 +1,42 @@
+﻿@model BookStoreAPI.Results.DBResults.Autor
+
+@{
+    ViewBag.Title = "Details";
+    var cel = 12 / Model.LIVROS.Count < 1 ? 1 : 12 / Model.LIVROS.Count;
+}
+
+<h2>Detalhes de @Model.NOME</h2>
+
+<div>
+    <h4>autor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Nome</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOME)
+        </dd>
+        <dt>
+            <label>Livros</label>
+        </dt>
+        <dd>
+            <table class="col-sm-12">
+                @foreach (var item in Model.LIVROS)
+                {
+                    <tr>
+                        <td >
+                            <div>@Html.DisplayFor(modelItem => item.TITULO)</div>
+                       </td>
+
+                   </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

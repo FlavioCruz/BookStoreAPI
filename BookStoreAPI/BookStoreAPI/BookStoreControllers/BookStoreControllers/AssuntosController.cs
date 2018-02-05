@@ -42,7 +42,7 @@ namespace BookStoreAPI.BookStoreControllers
         }
 
         [HttpPost]
-        [Route("api/EditAssunto/{nome}")]
+        [Route("api/EditAssunto")]
         public async Task<IHttpActionResult> EditAssunto(HttpRequestMessage request)
         {
             try
@@ -60,15 +60,15 @@ namespace BookStoreAPI.BookStoreControllers
         }
 
         [HttpPost]
-        [Route("api/CreateAssunto/{nome}")]
-        public async Task<IHttpActionResult> CreateAssunto()
+        [Route("api/CreateAssunto")]
+        public async Task<IHttpActionResult> CreateAssunto(HttpRequestMessage request)
         {
             try
             {
                 var obj = await Request.Content.ReadAsAsync<JObject>();
                 string nome = obj.GetValue("NOME").ToString();
-                var result = await crud.InsertAndGetObj(Querys.INSERT_EDITORA, nome);
-                return Ok(result.ID);
+                var result = await crud.Insert(Querys.INSERT_ASSUNTO, nome);
+                return Ok(result);
             }
             catch (Exception e)
             {

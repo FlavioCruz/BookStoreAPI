@@ -16,7 +16,7 @@ namespace BookStoreAPI.BookStoreModels.DBModels
     public partial class BookStoreEntities : DbContext
     {
         public BookStoreEntities()
-            : base("name=BookStoreEtities")
+            : base("name=BookStoreEntities")
         {
         }
     
@@ -29,5 +29,6 @@ namespace BookStoreAPI.BookStoreModels.DBModels
         public virtual DbSet<autor> autor { get; set; }
         public virtual DbSet<editora> editora { get; set; }
         public virtual DbSet<livro> livro { get; set; }
+        public virtual DbSet<usuario> usuario { get; set; }
     }
 }

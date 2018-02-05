@@ -67,8 +67,8 @@ namespace BookStoreAPI.BookStoreControllers
             {
                 var obj = await Request.Content.ReadAsAsync<JObject>();
                 string nome = obj.GetValue("NOME").ToString();
-                var result = await crud.InsertAndGetObj(Querys.INSERT_EDITORA, nome);
-                return Ok(result.ID);
+                var result = await crud.Insert(Querys.INSERT_EDITORA, nome);
+                return Ok(result);
             }
             catch (Exception e)
             {

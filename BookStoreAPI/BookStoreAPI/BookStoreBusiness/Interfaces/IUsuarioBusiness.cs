@@ -1,4 +1,4 @@
-﻿using BookStoreAPI.Results.DBResults;
+﻿using BookStoreAPI.BookStoreResults.DBResults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreAPI.BookStoreBusiness.Interfaces
 {
-    interface IEditoraBusiness : IDBBusiness<Editora>
+    interface IUsuarioBusiness :IDBBusiness<Usuario>
     {
-        Task<List<Editora>> ListEditoraByParam(string query, params object[] args);
     }
 }

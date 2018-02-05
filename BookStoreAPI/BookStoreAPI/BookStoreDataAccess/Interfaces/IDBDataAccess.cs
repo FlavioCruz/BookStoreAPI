@@ -12,7 +12,7 @@ namespace BookStoreAPI.BookStoreDataAccess.Interfaces
 
         Task<T> ListById<T>(string query, params object[] args);
 
-        Task<T> InsertAndGetObj<T>(string query, params object[] args);
+        Task<int> Insert(string query, params object[] args);
 
         Task<T> Update<T>(string query, params object[] args);
 

@@ -24,9 +24,9 @@ namespace BookStoreAPI.BookStoreBusiness
             return await crudModel.ListById<T>(query, args);
         }
 
-        public virtual async Task<T> InsertAndGetObj(string query, params object[] args)
+        public virtual async Task<int> Insert(string query, params object[] args)
         {
-            return await crudModel.InsertAndGetObj<T>(query, args);
+            return await crudModel.Insert(query, args);
         }
 
         public virtual async Task<T> Update(string query, params object[] args)

@@ -27,24 +27,15 @@ namespace BookStoreAPI.BookStoreBusiness.Entities
             }
         }
 
-        public override async Task<List<Autor>> ListAll(string query, params object[] args)
-        {
-            List<Autor> result = await base.ListAll(query, args);
-            foreach(var r in result)
-            {
-                r.EDITORAS = await EditoraBusiness.instance.ListEditoraByAutor(Querys.SELECT_EDITORA_BY_AUTOR, r.ID);
-            }
-            return result;
-        }
-
         public override async Task<Autor> ListById(string query, params object[] args)
         {
             Autor result = await base.ListById(query, args);
-            result.EDITORAS = await EditoraBusiness.instance.ListEditoraByAutor(Querys.SELECT_EDITORA_BY_AUTOR, result.ID);
+            result.EDITORAS = await EditoraBusiness.instance.ListEditoraByParam(Querys.SELECT_EDITORA_BY_AUTOR, result.ID);
+            result.LIVROS = await LivroBusiness.instance.ListLivroByParam(Querys.SELECT_LIVRO_BY_AUTOR, result.ID);
             return result;
         }
 
-        public Task<List<Autor>> ListAutorByEditora(string query, params object[] args)
+        public Task<List<Autor>> ListAutorByParam(string query, params object[] args)
         {
             return ListAll(query, args);
         }

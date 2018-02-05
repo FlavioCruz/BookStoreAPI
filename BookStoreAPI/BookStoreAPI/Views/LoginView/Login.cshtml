@@ -1,0 +1,32 @@
+﻿@using BookStoreAPI.Results.DBResults;
+
+@{
+    ViewBag.Title = "Login";
+    Assunto assunto = (Assunto)ViewData["assunto"];
+    string usuario = "", senha = "";
+}
+
+<h2>Login</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            <label for="inputForUsuario" class="panel-title">Usuario</label>
+            <input id="inputForUsuario" name="inputForUsuario" />
+        </dt>
+
+        <dt>
+            <label for="inputForSenha" class="panel-title">Senha</label>
+            <input id="inputForSenha" name="inputForSenha"/> 
+        </dt>       
+    </dl>
+</div>
+<script>
+    function Validate(){
+        @usuario = $('inputForUsuario').val() == null ? "" : $('inputForUsuario').val();
+        @senha = $('inputForSenha').val() == null ? "" : $('inputForSenha').val();
+    }
+</script> 
+<button class="btn" onclick="Validate()">
+   Logar
+</button>
